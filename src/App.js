@@ -12,8 +12,14 @@ function App() {
         <ItemsProvider>
           <Router>
             <Routes>
-              <Route path="/" element={<Hero />}></Route>
-              <Route path="/cart" element={<Cart />}></Route>
+              <Route
+                path={process.env.PUBLIC_URL + "/"}
+                element={<Hero />}
+              ></Route>
+              <Route
+                path={process.env.PUBLIC_URL + "/cart"}
+                element={<Cart />}
+              ></Route>
             </Routes>
           </Router>
         </ItemsProvider>
