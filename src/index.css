@@ -355,3 +355,9 @@ Menu
   justify-content: flex-end;
   border-bottom: 1px solid black;
 }
+@media (max-width: 600px) {
+  .cart-item img {
+    width: 200px;
+    height: auto;
+  }
+}
