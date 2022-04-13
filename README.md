@@ -1,1 +1,2 @@
-# react-projects-5-menu
+# Menu with a e-commerce Cart
+design by: John Smilga
