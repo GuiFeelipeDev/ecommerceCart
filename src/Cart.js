@@ -8,6 +8,7 @@ function Cart() {
   const [soma, setSoma] = useState(0);
   let counter = [];
   const cart = localStorage.getItem("DB");
+
   const [cartItems, setCartItems] = useState(JSON.parse(cart));
   let aux1 = localStorage.getItem("QNT");
 
@@ -63,11 +64,23 @@ function Cart() {
 
   const cartFiltItems = [...new Set(cartItems.map((val) => val.id))];
 
+  //filtering
+  let cartTemp = [];
+
+  for (let i = 0; i < cartFiltItems.length; i++) {
+    for (let c = 0; c < cartItems.length; c++) {
+      if (cartItems[c].id === cartFiltItems[i]) {
+        cartTemp[i] = cartItems[c];
+      }
+    }
+  }
+  //setCartItems(cartTemp);
+  //--------
+
   const increaseQuantity = (index) => {
     let newQuant = [...quant];
     newQuant[index] = quant[index] + 1;
     setQuant(newQuant);
-    console.log(quant);
   };
   const decreaseQuantity = (index) => {
     let newQuant = [...quant];
@@ -81,11 +94,10 @@ function Cart() {
     let name = "",
       quantity = "";
     for (let i = 0; i < cartFiltItems.length; i++) {
-      name = `${name}` + `${cartItems[i].title}` + ", ";
+      name = `${name}` + `${cartTemp[i].title}` + ", ";
       quantity = `${quantity}` + `${quant[i]}` + ", ";
     }
     submitItems = { name: name, quantity: quantity, total: soma };
-    console.log(submitItems);
     if (submitItems.name !== "") {
       axios
         .post(

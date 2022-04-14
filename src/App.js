@@ -6,8 +6,10 @@ import "react-toastify/dist/ReactToastify.css";
 import { BrowserRouter as Router, Link, Routes, Route } from "react-router-dom";
 import ItemsProvider, { CartProvider } from "./context/index";
 function App() {
-  localStorage.setItem("DB", "[]");
-  localStorage.setItem("QNT", "[]");
+  if (localStorage.getItem("DB") === null) {
+    localStorage.setItem("DB", "[]");
+    localStorage.setItem("QNT", "[]");
+  }
   return (
     <>
       <CartProvider>

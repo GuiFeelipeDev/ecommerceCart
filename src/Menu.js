@@ -14,7 +14,6 @@ const Menu = ({ items }) => {
   }, []);
   const [onCart, setOnCart] = useState(cart);
 
-  console.log(onCart);
   const addToCart = (menuItem) => {
     if (onCart != null) {
       setOnCart([...onCart, menuItem]);
